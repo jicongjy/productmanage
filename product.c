@@ -1,3 +1,4 @@
+//함수c파일
 #include "product.h"
 
 int createProduct(Product *p){
