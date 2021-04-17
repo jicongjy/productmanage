@@ -83,3 +83,51 @@ int selectMenu(){
     return menu;
 }
 
+void saveData(Product *p, int count){
+    FILE *fp;
+    fp=fopen("product.txt" , "wt");
+        for(int i=0; i<count; i++){
+        if(p[i].weight == -1) continue;
+            fprintf(fp, "%s %d %d %d \n" ,p[i].name, p[i].weight, p[i].price, p[i].num);
+    }
+    fclose(fp);
+    printf("=> 저장됨! ");
+}
+
+int loadData(Product *p){
+    int count = 0, i = 0; int test=0;
+    FILE *fp;
+    fp = fopen("product.txt", "rt");
+    if(fp == NULL)
+         printf("=>파일 없음\n");
+    else{
+    for(; i < 100; i++){
+         fscanf(fp, "%s", p[i].name);
+         if(feof(fp)) break;
+                 fscanf(fp, "%d", &p[i].weight);
+                 fscanf(fp, "%d", &p[i].price);
+                 fscanf(fp, "%d", &p[i].num);
+                }
+    fclose(fp);
+    printf("=> 로딩 성공!\n");
+    }
+    return i;
+}
+
+void searchName(Product *p, int count){
+    int scnt = 0;
+    char search[20];
+    printf("검색할 메뉴는? ");
+    scanf("%s", search);
+    printf("================================\n");
+        for(int i =0; i <count ; i++){ if(p[i].weight == -1) continue;
+            if(strstr(p[i].name, search)){
+                 printf("%2d ", i+1);
+                 readProduct(p[i]);
+                 scnt++;
+                 }
+                }
+    if(scnt == 0) printf("=> 검색된 데이터 없음!");
+        printf("\n");
+}
+
