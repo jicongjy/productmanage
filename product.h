@@ -1,3 +1,4 @@
+//헤더파일
 #include <stdio.h>
 #include <string.h>
 
