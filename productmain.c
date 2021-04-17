@@ -1,4 +1,4 @@
-//메인함수
+//c 메인함수
 #include <stdio.h>
 #include <string.h>
 #include "product.h"
