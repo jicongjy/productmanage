@@ -118,7 +118,13 @@ int loadData(Product *p){
 void searchName(Product *p, int count){
     int scnt = 0;
     char search[20];
-    printf("검색할 메뉴는? ");
+    int num;
+    int sea;
+    printf("검색 방법은?(이름 :1, 중량 :2, 가격 :3, 별점 :4)");
+    scanf("%d" , num);
+
+    if(num==1){
+    printf("검색할 메뉴 이름은? ");
     scanf("%s", search);
     printf("================================\n");
         for(int i =0; i <count ; i++){ if(p[i].weight == -1) continue;
@@ -130,5 +136,51 @@ void searchName(Product *p, int count){
                 }
     if(scnt == 0) printf("=> 검색된 데이터 없음!");
         printf("\n");
+    }
+
+    else if(num==2){
+    printf("검색할 중량은? ");
+    scanf("%d", sea);
+    printf("================================\n");
+        for(int i =0; i <count ; i++){ if(p[i].weight == -1) continue;
+            if(p[i].weight==sea){
+                 printf("%2d ", i+1);
+                 readProduct(p[i]);
+                 scnt++;
+                 }
+                }
+    if(scnt == 0) printf("=> 검색된 데이터 없음!");
+        printf("\n");
+    }
+
+    else if(num==3){
+    printf("검색할 가격은? ");
+    scanf("%d", sea);
+    printf("================================\n");
+        for(int i =0; i <count ; i++){ if(p[i].weight == -1) continue;
+            if(p[i].price==sea){
+                 printf("%2d ", i+1);
+                 readProduct(p[i]);
+                 scnt++;
+                 }
+                }
+    if(scnt == 0) printf("=> 검색된 데이터 없음!");
+        printf("\n");
+    }
+
+    else if(num==4){
+    printf("검색할 별점은? ");
+    scanf("%d", sea);
+    printf("================================\n");
+        for(int i =0; i <count ; i++){ if(p[i].weight == -1) continue;
+            if(p[i].num==sea){
+                 printf("%2d ", i+1);
+                 readProduct(p[i]);
+                 scnt++;
+                 }
+                }
+    if(scnt == 0) printf("=> 검색된 데이터 없음!");
+        printf("\n");
+    }
 }
 
