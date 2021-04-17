@@ -9,6 +9,7 @@ int main(){
     Product slist[20];
     int index=0;
     int count=0, menu;
+    count=loadData(slist);
     index = count;
 
     while(1){
@@ -39,6 +40,13 @@ int main(){
           if (no>0)
           deleteProduct(&slist[no-1]);
         }
+     else if(menu==5) {
+         saveData(slist, index);
+         }
+     else if(menu==6) {
+         searchName(slist, index);
+     }
+    }
     return 0;
 }
 
